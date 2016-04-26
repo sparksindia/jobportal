@@ -1,0 +1,31 @@
+<?php echo $this->doctype(); ?>
+<?php
+//print_r($this->layout());die;
+?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Default Module</title>
+	</head>
+	
+	<body>
+		<header>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<?php if(!Zend_Auth::getInstance()->hasIdentity()) { ?>
+				<li><a href="/default/auth/login">SignUp/SignIn</a></li>
+				<?php } else { ?>
+				<li><a href="/<?php echo Zend_Auth::getInstance()->getIdentity()['role'];?>/index/dashboard">Dashboard</a></li>
+				<li><a href="/default/auth/logout">Logout</a></li>
+				<?php } ?>
+			</ul>
+		</header>
+		<div id="container">
+			<?php echo $this->layout()->content; ?>
+		</div>
+		<footer>
+			copyright 2016
+		</footer>
+	</body>
+
+</html>

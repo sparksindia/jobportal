@@ -1,0 +1,33 @@
+<?php echo $this->doctype(); ?>
+<?php
+	$menuNameSpace = new Zend_Session_Namespace('menu');
+
+	$menuArr = $menuNameSpace->menuArr;
+?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Specialist Module</title>
+	</head>
+	
+	<body>
+		<header>
+			<ul>
+				<?php
+					foreach($menuArr as $menu) {
+				?>
+					<li><a href="/<?php echo $menu['url'];?>"><?php echo $menu['menu_name'];?></a></li>
+				<?php
+					}
+				?>
+			</ul>
+		</header>
+		<div id="container">
+			<?php echo $this->layout()->content; ?>
+		</div>
+		<footer>
+			copyright 2016
+		</footer>
+	</body>
+
+</html>
